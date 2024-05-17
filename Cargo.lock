@@ -900,11 +900,8 @@ dependencies = [
  "dioxus 0.5.1",
  "dioxus-html-macro",
  "dioxus-logger",
- "lazy_static",
  "serde",
- "sqlite",
  "tracing",
- "wasm-logger",
 ]
 
 [[package]]
@@ -1980,12 +1977,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pkg-config"
-version = "0.3.30"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d231b230927b5e4ad203db57bbcbee2802f6bce620b1e4a9024a07d94e2907ec"
-
-[[package]]
 name = "ppv-lite86"
 version = "0.2.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2373,34 +2364,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2d4f0e86297cad2658d92a707320d87bf4e6ae1050287f51d19b67ef3f153a7b"
 dependencies = [
  "lock_api",
-]
-
-[[package]]
-name = "sqlite"
-version = "0.36.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "274e5a9a0968bc9797fd3fe75a544cbcd3e3c2a111cb1c11cb8a0290f9684cb2"
-dependencies = [
- "sqlite3-sys",
-]
-
-[[package]]
-name = "sqlite3-src"
-version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "174d4a6df77c27db281fb23de1a6d968f3aaaa4807c2a1afa8056b971f947b4a"
-dependencies = [
- "cc",
- "pkg-config",
-]
-
-[[package]]
-name = "sqlite3-sys"
-version = "0.17.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3901ada7090c3c3584dc92ec7ef1b7091868d13bfe6d7de9f0bcaffee7d0ade5"
-dependencies = [
- "sqlite3-src",
 ]
 
 [[package]]
@@ -2862,17 +2825,6 @@ name = "wasm-bindgen-shared"
 version = "0.2.92"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af190c94f2773fdb3729c55b007a722abb5384da03bc0986df4c289bf5567e96"
-
-[[package]]
-name = "wasm-logger"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "074649a66bb306c8f2068c9016395fa65d8e08d2affcbf95acf3c24c3ab19718"
-dependencies = [
- "log",
- "wasm-bindgen",
- "web-sys",
-]
 
 [[package]]
 name = "wasm-streams"

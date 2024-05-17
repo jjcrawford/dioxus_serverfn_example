@@ -1,15 +1,8 @@
 #![allow(non_snake_case)]
 
-#[macro_use]
-extern crate lazy_static;
-
 use dioxus_html_macro::*;
 use dioxus::prelude::*;
 use tracing::{info, Level};
-use std::sync::{Arc, Mutex};
-
-#[cfg(feature="server")]
-use sqlite::Connection;
 
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
@@ -20,21 +13,8 @@ enum Route {
     AboutPage { },
 }
 
-#[cfg(feature="server")]
-lazy_static! {
-    static ref DATABASE : Arc<Mutex<sqlite::Connection>> =
-                                                Arc::new(
-                                                    Mutex::new(
-                                                        Connection::open("test_database.db")
-                                                        .expect("Couldn't open database!")
-                                                    )
-                                                );
-}
-
 fn main() {
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
-    // #[cfg(features="web")]
-    wasm_logger::init(wasm_logger::Config::default());
     launch(App);
 }
 
@@ -74,7 +54,7 @@ fn HomePage() -> Element {
                 <p>"Query something from the database here."</p>
                 <input value="{query_input}" oninput={move |evt| query_input.set(evt.value())} name="query_input" placeholder="Please enter a query string here" required={true}/>
                 <input r#type="submit"> </input> 
-                <p>"Response text is {response_text:?}"</p>
+                <p>"Response text from server is {response_text:?}"</p>
             </form>
         </div>
     )
@@ -84,8 +64,8 @@ fn HomePage() -> Element {
 async fn query_database(data: String) -> Result<Option<String>, ServerFnError> {
     //this code only runs on the server
     info!("Server received: {}", data);
-
-    Ok(Some(String::from("Blah")))
+    // ... do a database call or something ... 
+    Ok(Some(format!("Thanks for sending me {}, here's where I would respond with a database call if I had one.", data)))
 }
 
 
